@@ -7,7 +7,7 @@ import { MagneticButton } from "./magnetic-button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  {href: "#why", label: "Problem" },
+  {href: "#problem", label: "Problem" },
   { href: "#solution", label: "Product" },
   { href: "#security", label: "Security" },
   
