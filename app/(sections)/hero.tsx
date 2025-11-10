@@ -8,6 +8,8 @@ import { Parallax } from "@/app/(components)/parallax";
 import { copy } from "@/content/copy";
 import { cn } from "@/lib/utils";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { TypingDemo } from "@/app/(components)/typing-demo";
+import { ScrambleText } from "@/app/(components)/scramble-text";
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -37,24 +39,24 @@ export function Hero() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative isolate flex min-h-[90vh] flex-col justify-center overflow-hidden bg-aurora pt-28"
+      className="relative isolate flex min-h-[90vh] flex-col justify-center overflow-visible pt-24"
     >
       <Parallax
         layers={[
           {
             depth: -0.2,
             className:
-              "bg-[radial-gradient(circle_at_10%_20%,rgba(93,214,255,0.35),transparent_58%)]"
+              "bg-[radial-gradient(circle_at_10%_20%,rgba(0, 167, 217, 0.15),transparent_58%)]"
           },
           {
             depth: -0.4,
             className:
-              "bg-[radial-gradient(circle_at_80%_0%,rgba(149,128,255,0.3),transparent_55%)]"
+              "bg-[radial-gradient(circle_at_80%_0%,rgba(0, 176, 229, 0.12),transparent_55%)]"
           },
           {
             depth: -0.6,
             className:
-              "bg-[linear-gradient(140deg,rgba(93,214,255,0.12),rgba(11,14,24,0)_65%)]"
+              "bg-[linear-gradient(140deg,rgba(0, 167, 217, 0.08),rgba(11,14,24,0)_65%)]"
           }
         ]}
         className="absolute inset-0"
@@ -70,23 +72,27 @@ export function Hero() {
           className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-2 text-xs font-medium uppercase tracking-[0.3rem] text-white/70 shadow-[0_0_40px_rgba(93,214,255,0.35)]"
           style={{ scale: logoScale, opacity: logoOpacity }}
         >
-          MunicipalLabs
-          <span className="inline-flex h-2 w-2 rounded-full bg-accent shadow-[0_0_12px_rgba(93,214,255,0.95)]" />
-          Legaside Alpha
+          Municipal Labs
         </motion.div>
 
         <motion.h1
           className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white md:text-6xl"
           style={{ y: headlineY }}
         >
-          {copy.hero.title}
+          <ScrambleText
+            text={copy.hero.title}
+            className="inline-block font-mono"
+            durationMs={1200}
+            charset="@#$%&*+=-_"
+            delayMs={120}
+          />
         </motion.h1>
 
         <motion.p
           className="max-w-2xl text-pretty text-base text-muted-foreground md:text-lg"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          transition={{ delay: 0.35, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           {copy.hero.subtitle}
         </motion.p>
@@ -97,17 +103,12 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          <MagneticButton href="#contact">
-            {copy.hero.ctaPrimary}
-          </MagneticButton>
-          <a
-            href="#product"
-            className={cn(
-              "btn-focus inline-flex items-center justify-center rounded-full border border-white/15 px-8 py-3 text-sm font-semibold text-muted-foreground hover:text-white"
-            )}
+          <MagneticButton 
+            href="https://legaside-v0-frontend.vercel.app/"
+            className="hover:shadow-[0_0_30px_rgba(93,214,255,0.6)] hover:border-accent"
           >
             {copy.hero.ctaSecondary}
-          </a>
+          </MagneticButton>
         </motion.div>
       </div>
 
@@ -131,74 +132,26 @@ export function Hero() {
                 : { repeat: Infinity, duration: 30, ease: "linear" }
             }
           />
-          <div className="relative grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
+          <div className="relative grid gap-10 md:grid-cols-2">
             <div className="space-y-6 text-left">
               <p className="text-sm uppercase tracking-[0.4rem] text-accent">
                 Why now
               </p>
               <p className="text-pretty text-lg text-muted-foreground md:text-xl">
-                Legaside clears thousands of resident messages with assistive AI
-                that justifies every action. Teams triage faster, craft
-                responses in context, and unlock analytics that finally show
-                what the city is hearing.
+                Mason grew up around politics, with his mom serving as a New
+                York City council member, and saw firsthand how outdated
+                government technology is. From constituent emails to 311
+                systems, everything relies on archaic tools. With Aikhan’s
+                experience building government-recognized AI tools and Mason’s
+                domain expertise, they set out to change that. After weeks of
+                interviews, one theme became clear: officials have no simple way
+                to manage or analyze constituent communication. Existing CRMs
+                like Caucus are clunky and lack real insights. That frustration
+                drives what they’re building now.
               </p>
-              <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.3rem] text-muted-foreground">
-                <span className="rounded-full border border-white/10 px-3 py-1">
-                  Inbox AI
-                </span>
-                <span className="rounded-full border border-white/10 px-3 py-1">
-                  Compliance-first
-                </span>
-                <span className="rounded-full border border-white/10 px-3 py-1">
-                  Human in loop
-                </span>
-              </div>
             </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/15 via-transparent to-transparent blur-3xl" />
-              <motion.div
-                className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl shadow-black/30"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                    <span className="h-2 w-2 rounded-full bg-green-400/80" />
-                    Inbox Health
-                  </div>
-                  <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-muted-foreground">
-                    Live
-                  </span>
-                </div>
-                <div className="space-y-6 px-6 py-8 text-left">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3rem] text-muted-foreground">
-                      Today&apos;s queue
-                    </p>
-                    <p className="mt-2 text-3xl font-semibold text-white">
-                      482 messages
-                    </p>
-                  </div>
-                  <div className="grid gap-3">
-                    {[
-                      { label: "Auto routed", value: "73%" },
-                      { label: "Ready to send", value: "124" },
-                      { label: "Needs review", value: "14" }
-                    ].map((item) => (
-                      <div
-                        key={item.label}
-                        className="flex items-center justify-between rounded-2xl bg-white/5 px-4 py-3 text-sm text-muted-foreground"
-                      >
-                        <span>{item.label}</span>
-                        <span className="font-semibold text-white">
-                          {item.value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
+            <div className="max-w-xl justify-self-center md:justify-self-end md:self-center">
+              <TypingDemo />
             </div>
           </div>
         </div>

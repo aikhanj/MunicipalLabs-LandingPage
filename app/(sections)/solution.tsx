@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TiltCard } from "@/app/(components)/tilt-card";
+import { TypingDemo } from "@/app/(components)/typing-demo";
 import { SectionHeading } from "@/app/(components)/section-heading";
 import { copy } from "@/content/copy";
 import { MagneticButton } from "@/app/(components)/magnetic-button";
@@ -48,30 +48,7 @@ const tabConfig = [
   }
 ];
 
-function TypingLine({ text }: { text: string }) {
-  const [display, setDisplay] = useState("");
-
-  useEffect(() => {
-    let frame = 0;
-    const interval = window.setInterval(() => {
-      frame += 1;
-      setDisplay(text.slice(0, frame));
-      if (frame >= text.length) {
-        window.clearInterval(interval);
-      }
-    }, 35);
-    return () => window.clearInterval(interval);
-  }, [text]);
-
-  return (
-    <span className="inline-flex items-center text-white">
-      {display}
-      {display.length < text.length ? (
-        <span className="ml-1 h-4 w-[2px] animate-pulse bg-white/70" />
-      ) : null}
-    </span>
-  );
-}
+// TypingLine replaced by TypingDemo for a richer looping animation
 
 export function Solution() {
   return (
@@ -86,8 +63,8 @@ export function Solution() {
       />
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div>
-          <Tabs defaultValue="inbox">
+        <div className="lg:order-2 grid h-full grid-rows-[1fr_auto]">
+          <Tabs defaultValue="inbox" >
             <TabsList>
               {tabConfig.map((tab) => (
                 <TabsTrigger key={tab.value} value={tab.value}>
@@ -97,8 +74,8 @@ export function Solution() {
             </TabsList>
             {tabConfig.map((tab) => (
               <TabsContent key={tab.value} value={tab.value}>
-                <TiltCard className="bg-white/5">
-                  <div className="relative overflow-hidden rounded-[calc(theme(borderRadius.3xl)-1px)] p-8">
+                <div className="h-full rounded-3xl border border-white/10 bg-white/5 p-[1px]">
+                  <div className="glass relative h-full overflow-hidden rounded-[calc(theme(borderRadius.3xl)-1px)] p-8">
                     <div className="space-y-5 text-left">
                       <motion.h3
                         className="text-2xl font-semibold text-white"
@@ -118,20 +95,10 @@ export function Solution() {
                       >
                         {tab.body}
                       </motion.p>
-                      <ul className="grid gap-3 text-sm text-muted-foreground/80 md:grid-cols-2">
-                        {tab.highlights.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.25rem] text-muted-foreground"
-                          >
-                            <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_10px_rgba(93,214,255,0.8)]" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
+                      {/* Highlights pills removed */}
                     </div>
                   </div>
-                </TiltCard>
+                </div>
               </TabsContent>
             ))}
           </Tabs>
@@ -151,59 +118,55 @@ export function Solution() {
           </div>
         </div>
 
-        <div className="space-y-6">
-          <TiltCard glare={false}>
-            <div className="relative overflow-hidden rounded-[calc(theme(borderRadius.3xl)-1px)] border border-white/5 bg-gradient-to-br from-accent/15 via-transparent to-white/5">
-              <div className="flex items-center gap-3 border-b border-white/10 px-6 py-4 text-sm text-muted-foreground">
-                <span className="h-2 w-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.8)]" />
-                Drafting reply to resident
+        <div className="space-y-6 lg:order-1 h-full">
+          <div className="h-full rounded-3xl border border-white/10 bg-white/5 p-[1px]">
+            <div className="glass relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.3xl)-1px)] border border-white/5 bg-gradient-to-br from-accent/10 via-transparent to-white/5 p-4 md:p-6">
+              <div className="mb-3 flex items-center gap-3 border-b border-white/10 pb-3 text-sm text-muted-foreground">
+                <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
+                Composing outreach note
               </div>
-              <div className="space-y-3 px-6 py-6 text-left text-sm text-muted-foreground">
-                <p className="text-xs uppercase tracking-[0.4rem] text-white/70">
-                  Suggested response
-                </p>
-                <TypingLine text="Thanks for reaching out about the streetlight outage on Maple Ave. We've logged the issue with Public Works and expect a crew onsite within 24 hours." />
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-[0.3rem] text-muted-foreground">
-                    Applied context
-                  </p>
-                  <ul className="mt-2 space-y-2 text-sm">
-                    <li>• Past 8 messages on the thread</li>
-                    <li>• Service tickets from the last 14 days</li>
-                    <li>• Resident sentiment trend</li>
-                  </ul>
-                </div>
-              </div>
+              <TypingDemo
+                className="h-full"
+                title="Auto-drafted note"
+                contextHeading="Data Utilized"
+                messages={[
+                  "Thanks for flagging the pothole on 5th and Pine. The street team has your report and is scheduling a repair window for Wednesday morning.",
+                  "We're checking on your question about bus route 18. Transit provided new headway data; we'll post an update after the schedule change this weekend.",
+                  "Appreciate your suggestion for a community garden. We've shared it with Parks & Rec and will follow up about grant eligibility."
+                ]}
+                statusLabels={[
+                  "Analyzing thread",
+                  "Checking SLA + records",
+                  "Consulting 311 + open data",
+                  "Preparing brief"
+                ]}
+                contextItems={[
+                  "Thread summary (last 6 emails)",
+                  "311 cases within 0.5 mi",
+                  "Department SLA + current backlog",
+                  "Resident sentiment trend (last 30 days)",
+                  "Recent council notes on topic",
+                  "Open work orders linked to address",
+                  "Community board or neighborhood association involvement",
+                  "Social media sentiment for that address/topic",
+                  "Demographics of nearby residents (aggregate only)"
+                ]}
+              />
             </div>
-          </TiltCard>
+          </div>
+          {/* Removed CTA card with paragraph and buttons per request */}
+        </div>
+      </div>
 
-          <TiltCard>
-            <div className="rounded-[calc(theme(borderRadius.3xl)-1px)] bg-white/5 p-6">
-              <p className="text-xs uppercase tracking-[0.3rem] text-muted-foreground">
-                Weekly analytics
-              </p>
-              <div className="mt-4">
-                <InboxTrendChart />
-              </div>
-            </div>
-          </TiltCard>
-
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <p className="text-sm text-muted-foreground">
-              Human-in-the-loop by default. Every draft holds full provenance,
-              down to the paragraph. Staff stay accountable while Legaside
-              handles the heavy lift.
+      {/* Full-width analytics at the bottom */}
+      <div className="mt-10">
+        <div className="rounded-3xl border border-white/10 bg-white/5 p-[1px]">
+          <div className="glass rounded-[calc(theme(borderRadius.3xl)-1px)] bg-white/5 p-6">
+            <p className="text-xs uppercase tracking-[0.3rem] text-muted-foreground">
+              Weekly analytics
             </p>
-            <div className="mt-4 flex gap-3">
-              <MagneticButton href="#contact" className="flex-1 justify-center">
-                Start pilot
-              </MagneticButton>
-              <MagneticButton
-                href="#roadmap"
-                className="flex-1 justify-center bg-white/5 text-muted-foreground hover:text-white"
-              >
-                Roadmap
-              </MagneticButton>
+            <div className="mt-4">
+              <InboxTrendChart />
             </div>
           </div>
         </div>

@@ -10,9 +10,8 @@ const navItems = [
   { href: "#product", label: "Product" },
   { href: "#how-it-works", label: "How it works" },
   { href: "#security", label: "Security" },
-  { href: "#roadmap", label: "Roadmap" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" }
+  { href: "#tech", label: "Tech" },
+  { href: "#about", label: "About" }
 ];
 
 export function Navbar() {
@@ -28,7 +27,7 @@ export function Navbar() {
   return (
     <motion.header
       className={cn(
-        "sticky top-4 z-50 mx-auto flex w-[min(1100px,94vw)] items-center justify-between rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 backdrop-blur-xl transition-all",
+        "sticky top-4 z-50 mx-auto flex w-[min(1100px,94vw)] items-center justify-between rounded-full border border-white/10 bg-transparent px-6 py-3 backdrop-blur-xl transition-all",
         scrolled ? "shadow-xl shadow-black/40" : ""
       )}
       initial={{ opacity: 0, y: -24 }}
@@ -39,10 +38,8 @@ export function Navbar() {
         href="#hero"
         className="flex items-center gap-2 text-sm font-semibold text-white"
       >
-        <span className="relative grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-white/70 to-white/20 text-background shadow-lg shadow-sky-500/30">
-          ML
-        </span>
-        MunicipalLabs
+        
+        Municipal Labs
       </Link>
 
       <nav className="hidden items-center gap-7 text-sm text-muted-foreground/80 md:flex">
@@ -58,18 +55,11 @@ export function Navbar() {
       </nav>
 
       <div className="flex items-center gap-3">
-        <Link
-          href="#contact"
-          className="hidden rounded-full border border-white/15 px-4 py-2 text-sm text-muted-foreground transition hover:text-white md:inline-flex"
-        >
-          Get early access
-        </Link>
-        <MagneticButton className="hidden md:inline-flex" href="#contact">
-          Contact
+        
+        <MagneticButton className="hidden md:inline-flex" href="https://legaside-v0-frontend.vercel.app/">
+          Try Legaside
         </MagneticButton>
-        <MagneticButton className="md:hidden" href="#contact">
-          Connect
-        </MagneticButton>
+        
       </div>
     </motion.header>
   );

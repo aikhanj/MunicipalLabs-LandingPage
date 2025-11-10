@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { TiltCard } from "@/app/(components)/tilt-card";
 import { SectionHeading } from "@/app/(components)/section-heading";
 
 const steps = [
@@ -41,9 +40,9 @@ export function HowItWorks() {
 
       <div className="mt-12 grid gap-6 md:grid-cols-3">
         {steps.map((step, index) => (
-          <TiltCard key={step.title}>
+          <div key={step.title} className="rounded-3xl border border-white/10 bg-white/5 p-[1px]">
             <motion.div
-              className="relative h-full rounded-[calc(theme(borderRadius.3xl)-1px)] border border-white/10 bg-white/5 p-8"
+              className="glass relative h-full rounded-[calc(theme(borderRadius.3xl)-1px)] border border-white/10 bg-white/5 p-8"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
@@ -63,7 +62,7 @@ export function HowItWorks() {
                 whileHover={{ opacity: 1 }}
               />
             </motion.div>
-          </TiltCard>
+          </div>
         ))}
       </div>
     </section>

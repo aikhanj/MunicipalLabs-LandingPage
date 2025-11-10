@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/app/(components)/section-heading";
 
-const values = [
+const principles = [
   {
     title: "Ship with the public sector",
     description:
@@ -21,6 +21,27 @@ const values = [
   }
 ];
 
+const founders = [
+  {
+    name: "Mason Menin",
+    role: "CEO",
+    blurb:
+      "Grew up around city government; Mom is an NYC council member. Brings deep domain insight and relationships with local officials.",
+  },
+  {
+    name: "Aikhan Jumashukurov",
+    role: "CTO",
+    blurb:
+      "AI engineer recognized by Kyrgyz government for NLP education work. Builds the product end‑to‑end; writes the code and owns technical workflows.",
+    links: [
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/aikhanj" },
+      { label: "Website", href: "https://aikhanjumashukurov.com/" },
+      { label: "GitHub", href: "https://github.com/Lutashi/" },
+      { label: "Twitter", href: "https://x.com/jumashukurov" }
+    ]
+  }
+];
+
 export function About() {
   return (
     <section
@@ -30,8 +51,8 @@ export function About() {
     >
       <SectionHeading
         eyebrow="About"
-        title="Meet the team behind MunicipalLabs."
-        description="We’ve shipped AI infrastructure at top-tier startups and scaled civic tech inside city hall. MunicipalLabs exists to give public servants software they’re proud to use."
+        title="Meet the founders of MunicipalLabs."
+        description="We’re building practical AI for government teams. We met at Princeton, started prototyping together, and have been working in person since."
       />
 
       <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -42,31 +63,59 @@ export function About() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-xl font-semibold text-white">
-            MunicipalLabs’ mission
-          </h3>
+          <h3 className="text-xl font-semibold text-white">Our story</h3>
           <p className="text-sm text-muted-foreground">
-            Bring modern AI workflows to every municipality, starting with the
-            inbox. We believe responsive government is the foundation of a
-            healthy community, and that frontline staff deserve tools built for
-            their reality.
+            We met at the start of a semester at Princeton after Mason sent an email
+            looking for people interested in startups. We started brainstorming and prototyping,
+            realized we worked well as a team, and decided to build MunicipalLabs. We’ve been
+            working in person since then.
           </p>
+          <div className="grid gap-6 md:grid-cols-2">
+            {founders.map((f) => (
+              <div
+                key={f.name}
+                className="rounded-2xl border border-white/10 bg-white/5 p-6"
+              >
+                <h4 className="text-base font-semibold text-white">
+                  {f.name} · {f.role}
+                </h4>
+                <p className="mt-2 text-sm text-muted-foreground">{f.blurb}</p>
+                {f.links ? (
+                  <div className="mt-3 flex flex-wrap gap-3 text-xs uppercase tracking-[0.25rem] text-muted-foreground">
+                    {f.links.map((l) => (
+                      <a
+                        key={l.href}
+                        href={l.href}
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 transition hover:text-white"
+                      >
+                        {l.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <p className="text-xs uppercase tracking-[0.3rem] text-muted-foreground">
-              Founder note
+              Who builds the product?
             </p>
             <p className="mt-3 text-sm text-muted-foreground/90">
-              “After helping a major city recover from a records backlog, we
-              realized the gap wasn’t talent—it was tooling. MunicipalLabs
-              exists so public servants can lead with data, empathy, and speed.”
+              Aikhan writes the code and handles all technical workflows for the product.
             </p>
-            <p className="mt-4 text-xs uppercase tracking-[0.3rem] text-white/70">
-              Maya Chen · CEO, MunicipalLabs
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <p className="text-xs uppercase tracking-[0.3rem] text-muted-foreground">
+              Where we’re based
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground/90">
+              We currently live in Princeton (as students). After YC, we’d like to base the
+              company in San Francisco for proximity to forward‑thinking governments and AI talent.
             </p>
           </div>
         </motion.div>
         <div className="grid gap-6">
-          {values.map((value, index) => (
+          {principles.map((value, index) => (
             <motion.div
               key={value.title}
               className="rounded-3xl border border-white/10 bg-white/5 p-6"
