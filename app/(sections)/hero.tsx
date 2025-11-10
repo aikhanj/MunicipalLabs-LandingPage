@@ -12,6 +12,40 @@ import { TypingDemo } from "@/app/(components)/typing-demo";
 import { ScrambleText } from "@/app/(components)/scramble-text";
 
 export function Hero() {
+  const Glow = ({
+    children,
+    delay = 0
+  }: {
+    children: React.ReactNode;
+    delay?: number;
+  }) => (
+    <motion.span
+      className="text-accent"
+      // keep a soft base glow so it never snaps to zero
+      initial={{ textShadow: "0 0 8px rgba(93,214,255,0.25)" }}
+      animate={{
+        textShadow: [
+          "0 0 8px rgba(93,214,255,0.25)",
+          "0 0 22px rgba(93,214,255,0.9)",
+          "0 0 8px rgba(93,214,255,0.25)"
+        ],
+        // very subtle opacity breathe to smooth the crest/trough
+        opacity: [1, 0.98, 1]
+      }}
+      transition={{
+        duration: 3.0,
+        times: [0, 0.5, 1],
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: 0.15,
+        ease: "easeInOut",
+        delay
+      }}
+    >
+      {children}
+    </motion.span>
+  );
+
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -132,20 +166,18 @@ export function Hero() {
                 : { repeat: Infinity, duration: 30, ease: "linear" }
             }
           />
-          <div className="relative grid gap-10 md:grid-cols-2">
+          <div id="problem" className="relative grid gap-10 md:grid-cols-2">
             <div className="space-y-6 text-left">
               <p className="text-sm uppercase tracking-[0.4rem] text-accent">
-                Why now
+                Problem
               </p>
               <p className="text-pretty text-lg text-muted-foreground md:text-xl">
-                Mason grew up around politics, with his mom serving as a New
-                York City council member, and saw firsthand how outdated
-                government technology is. From constituent emails to 311
-                systems, everything relies on archaic tools. With Aikhan’s
-                experience building government-recognized AI tools and Mason’s
-                domain expertise, they set out to change that. After weeks of
-                interviews, one theme became clear: officials have no simple way
-                to manage or analyze constituent communication.
+                Across local governments, constituent communication remains <Glow>fragmented</Glow>, reactive, and manually managed.
+                Offices still rely on <Glow delay={0.2}>legacy CRMs</Glow> and inbox systems that lack visibility into trends, sentiment, and workload metrics.
+                Council staff spend hours triaging messages, logging 311 cases, and drafting repetitive replies without integrated <Glow delay={0.4}>analytics</Glow> or context.
+                The result is inefficient service delivery, limited <Glow delay={0.6}>accountability</Glow>, and poor <Glow delay={0.8}>data-driven</Glow> decision making.
+                Existing tools like Caucus and Granicus offer basic contact management but fail to unify multi-channel data or provide real-time <Glow delay={1.0}>policy insights</Glow>.
+                <span> </span><Glow delay={1.2}>MunicipalLabs</Glow> was built to modernize that infrastructure.
               </p>
             </div>
             <div className="max-w-xl justify-self-center md:justify-self-end md:self-center">
