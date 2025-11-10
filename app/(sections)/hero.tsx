@@ -145,9 +145,7 @@ export function Hero() {
                 experience building government-recognized AI tools and Mason’s
                 domain expertise, they set out to change that. After weeks of
                 interviews, one theme became clear: officials have no simple way
-                to manage or analyze constituent communication. Existing CRMs
-                like Caucus are clunky and lack real insights. That frustration
-                drives what they’re building now.
+                to manage or analyze constituent communication.
               </p>
             </div>
             <div className="max-w-xl justify-self-center md:justify-self-end md:self-center">

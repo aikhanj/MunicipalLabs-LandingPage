@@ -104,16 +104,35 @@ export function Solution() {
           </Tabs>
 
           <div className="mt-8 grid gap-4 text-sm text-muted-foreground">
-            {copy.solution.points.map((point) => (
-              <div
+            {copy.solution.points.map((point, idx) => (
+              <motion.div
                 key={point}
-                className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3"
+                className="group relative flex items-center gap-3 overflow-hidden rounded-full border border-white/10 bg-white/5 px-4 py-3"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-20% 0px -10% 0px" }}
+                transition={{ duration: 0.4, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -1, scale: 1.01 }}
+                whileTap={{ scale: 0.995 }}
               >
-                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent/40 text-accent-foreground">
+                {/* hover shimmer sweep */}
+                <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-transform duration-700 ease-out will-change-transform group-hover:translate-x-full group-hover:opacity-100" />
+                <motion.span
+                  className="relative inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent/40 text-accent-foreground"
+                  // soft pulsing glow for the checkmark badge
+                  animate={{
+                    filter: [
+                      "drop-shadow(0 0 0 rgba(93,214,255,0))",
+                      "drop-shadow(0 0 8px rgba(93,214,255,0.75))",
+                      "drop-shadow(0 0 0 rgba(93,214,255,0))"
+                    ]
+                  }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                >
                   ✓
-                </span>
+                </motion.span>
                 {point}
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

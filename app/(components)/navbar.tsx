@@ -7,11 +7,10 @@ import { MagneticButton } from "./magnetic-button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "#product", label: "Product" },
-  { href: "#how-it-works", label: "How it works" },
+  {href: "#why", label: "Problem" },
+  { href: "#solution", label: "Product" },
   { href: "#security", label: "Security" },
-  { href: "#tech", label: "Tech" },
-  { href: "#about", label: "About" }
+  
 ];
 
 export function Navbar() {
@@ -23,6 +22,16 @@ export function Navbar() {
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const scrollToHash = (hash: string, block: ScrollLogicalPosition = "center") => {
+    const id = hash.startsWith("#") ? hash.slice(1) : hash;
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block });
+      // Keep URL hash in sync without jumping
+      window.history.replaceState(null, "", `#${id}`);
+    }
+  };
 
   return (
     <motion.header
@@ -37,6 +46,10 @@ export function Navbar() {
       <Link
         href="#hero"
         className="flex items-center gap-2 text-sm font-semibold text-white"
+        onClick={(e) => {
+          e.preventDefault();
+          scrollToHash("#hero", "center");
+        }}
       >
         
         Municipal Labs
@@ -48,6 +61,12 @@ export function Navbar() {
             key={item.href}
             href={item.href}
             className="transition-colors hover:text-white"
+            onClick={(e) => {
+              e.preventDefault();
+              // Product -> start of "Meet Legaside"
+              const isProduct = item.href === "#solution";
+              scrollToHash(item.href, isProduct ? "start" : "center");
+            }}
           >
             {item.label}
           </Link>

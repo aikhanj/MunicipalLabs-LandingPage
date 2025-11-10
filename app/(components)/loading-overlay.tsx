@@ -13,30 +13,34 @@ export function LoadingOverlay({
 }) {
 	const [progress, setProgress] = useState(0);
 	const [showWelcome, setShowWelcome] = useState(false);
-	const timerRef = useRef<number | null>(null);
+	const rafRef = useRef<number | null>(null);
 	const failSafeRef = useRef<number | null>(null);
 	const completedRef = useRef(false);
 
 	useEffect(() => {
-		// Progress with easing and a couple jitter jumps for "hacker" vibe
-		let value = 0;
-		const tick = () => {
-			const remaining = 100 - value;
-			const step = Math.max(1, Math.round(remaining * 0.08));
-			// small randomization
-			value = Math.min(100, value + step + Math.floor(Math.random() * 3));
+		// Time-based progress using rAF for reliability
+		const totalDurationMs = 2600 + Math.floor(Math.random() * 600); // slight variance
+		let start: number | null = null;
+
+		const step = (now: number) => {
+			if (start === null) start = now;
+			const elapsed = now - start;
+			const t = Math.min(1, elapsed / totalDurationMs);
+			// easeOutCubic
+			const eased = 1 - Math.pow(1 - t, 3);
+			const value = Math.min(100, Math.round(eased * 100));
 			setProgress(value);
-			if (value < 100) {
-				timerRef.current = window.setTimeout(tick, 70);
+
+			if (t < 1) {
+				rafRef.current = requestAnimationFrame(step);
 			} else if (!completedRef.current) {
 				completedRef.current = true;
 				setShowWelcome(true);
-				window.setTimeout(() => {
-					onComplete();
-				}, 650);
+				window.setTimeout(() => onComplete(), 650);
 			}
 		};
-		timerRef.current = window.setTimeout(tick, 250);
+
+		rafRef.current = requestAnimationFrame(step);
 
 		// Fail-safe: ensure completion even if tab timers are throttled
 		// or the progress loop stalls for any reason.
@@ -45,14 +49,12 @@ export function LoadingOverlay({
 				setProgress(100);
 				completedRef.current = true;
 				setShowWelcome(true);
-				window.setTimeout(() => {
-					onComplete();
-				}, 500);
+				window.setTimeout(() => onComplete(), 500);
 			}
 		}, 6500);
 
 		return () => {
-			if (timerRef.current) window.clearTimeout(timerRef.current);
+			if (rafRef.current) cancelAnimationFrame(rafRef.current);
 			if (failSafeRef.current) window.clearTimeout(failSafeRef.current);
 		};
 	}, [onComplete]);

@@ -90,19 +90,49 @@ export function ScrambleText({
 		};
 	}, [text, durationMs, characters, delayMs, replayOnTextChange, prefersReducedMotion]);
 
+	// Group characters into words so lines break only between words,
+	// never inside a word (prevents "wi\nth" splits while scrambling).
+	const tokens = useMemo(() => {
+		type Token = { kind: "word" | "space"; from: number; to: number };
+		const result: Token[] = [];
+		let i = 0;
+		while (i < text.length) {
+			if (/\s/.test(text[i] ?? "")) {
+				const start = i;
+				while (i < text.length && /\s/.test(text[i] ?? "")) i++;
+				result.push({ kind: "space", from: start, to: i });
+			} else {
+				const start = i;
+				while (i < text.length && !/\s/.test(text[i] ?? "")) i++;
+				result.push({ kind: "word", from: start, to: i });
+			}
+		}
+		return result;
+	}, [text]);
+
 	return (
 		<span className={cn("font-mono tracking-normal", className)} aria-label={text}>
-			{output.map((ch, i) => (
-				<span
-					// Fixed-width slot per character to keep layout static
-					key={i}
-					style={{ width: "1ch" }}
-					className="inline-block"
-					aria-hidden="true"
-				>
-					{ch}
-				</span>
-			))}
+			{tokens.map((tok, idx) => {
+				if (tok.kind === "space") {
+					return <span key={`s-${idx}`} aria-hidden="true">{" "}</span>;
+				}
+				const wordChars = output.slice(tok.from, tok.to);
+				return (
+					<span key={`w-${idx}`} className="inline-flex whitespace-nowrap">
+						{wordChars.map((ch, i) => (
+							<span
+								// Fixed-width slot per character to keep layout static
+								key={i}
+								style={{ width: "1ch" }}
+								className="inline-block"
+								aria-hidden="true"
+							>
+								{ch}
+							</span>
+						))}
+					</span>
+				);
+			})}
 		</span>
 	);
 }

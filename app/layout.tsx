@@ -4,7 +4,7 @@ import React from "react";
 import { AudioProvider } from "@/app/(components)/audio-provider";
 
 export const metadata: Metadata = {
-  title: "MunicipalLabs",
+  title: "Municipal Labs",
   description:
     "Expediting GovOps through AI infrastructure",
 };
