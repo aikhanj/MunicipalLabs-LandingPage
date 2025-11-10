@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useEffect } from "react";
+import { useFormStatus } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   initialActionState,
@@ -28,7 +28,7 @@ function SubmitButton() {
 }
 
 export function CTA() {
-  const [state, formAction] = useFormState(
+  const [state, formAction] = useActionState(
     requestAccessAction,
     initialActionState
   );

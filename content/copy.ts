@@ -1,6 +1,6 @@
 export const copy = {
   hero: {
-    title: "Software that lets cities move at the speed of their people.",
+    title: "Expediting GovOps through AI infrastructure",
     subtitle:
       "MunicipalLabs builds AI tools for public-sector teams. Our first product, Legaside, classifies, summarizes, and drafts responses to constituent messages — with analytics your staff can act on.",
     ctaPrimary: "Get early access",

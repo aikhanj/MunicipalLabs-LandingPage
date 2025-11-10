@@ -8,7 +8,7 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 interface Particle {
   left: string;
   top: string;
-  size: number;
+  size: string;
   duration: number;
   delay: number;
 }
@@ -22,13 +22,22 @@ export function Particles({ quantity = 20, className }: ParticlesProps) {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const particles = useMemo<Particle[]>(() => {
+    const random = (seed: number) => {
+      const x = Math.sin(seed) * 10000;
+      return x - Math.floor(x);
+    };
+
+    const toPercent = (value: number) => `${value.toFixed(3)}%`;
+    const toPixels = (value: number) => `${value.toFixed(4)}px`;
+
     return Array.from({ length: quantity }).map((_, index) => {
-      const size = Math.random() * 10 + 6;
+      const seed = index + quantity * 97;
+      const size = random(seed) * 10 + 6;
       return {
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        size,
-        duration: 6 + Math.random() * 8,
+        left: toPercent(random(seed + 1) * 100),
+        top: toPercent(random(seed + 2) * 100),
+        size: toPixels(size),
+        duration: 6 + random(seed + 3) * 8,
         delay: index * 0.2
       };
     });

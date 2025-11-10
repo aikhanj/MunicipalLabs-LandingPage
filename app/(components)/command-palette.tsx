@@ -19,7 +19,6 @@ const commands: Command[] = [
   { label: "How it works", href: "#how-it-works", keywords: ["steps", "process"] },
   { label: "Security", href: "#security", keywords: ["compliance", "rls"] },
   { label: "Metrics", href: "#metrics", keywords: ["proof", "logos"] },
-  { label: "Roadmap", href: "#roadmap", keywords: ["timeline", "q1"] },
   { label: "About", href: "#about", keywords: ["team", "mission"] },
   { label: "Request access", href: "#contact", keywords: ["cta", "form"] }
 ];
