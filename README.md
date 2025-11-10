@@ -1,5 +1,4 @@
-# MunicipalLabs — Premium Landing
-
+# MunicipalLabs
 MunicipalLabs builds modern AI tools for the public sector. This repo ships a production-ready marketing site for Legaside, the flagship AI inbox + CRM. It runs on **Next.js 15 (App Router)** with **TypeScript**, **Tailwind**, **shadcn/ui**, **Framer Motion**, **lucide-react**, and **Recharts**. The design leans into glassmorphism, dark gradients, scroll-linked motion, and high conversion CTAs.
 
 ## ✨ Highlights
