@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="64" viewBox="0 0 160 64">
+  <defs>
+    <linearGradient id="s" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#F6A8FF"/>
+      <stop offset="100%" stop-color="#5DD6FF"/>
+    </linearGradient>
+  </defs>
+  <polygon points="20,44 32,20 44,44" fill="url(#s)" opacity="0.6"/>
+  <rect x="26" y="28" width="12" height="12" fill="url(#s)" opacity="0.7"/>
+  <text x="70" y="38" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#E6F6FF">Statecraft Labs</text>
+</svg>
+

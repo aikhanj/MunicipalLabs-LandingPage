@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="64" viewBox="0 0 160 64">
+  <defs>
+    <linearGradient id="m" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5DD6FF"/>
+      <stop offset="100%" stop-color="#90F4BC"/>
+    </linearGradient>
+  </defs>
+  <path d="M16 44V20l12 8 12-8v24" fill="none" stroke="url(#m)" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" opacity="0.6"/>
+  <text x="70" y="38" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#E6F6FF">MetroOps</text>
+</svg>
+
