@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/app/(components)/section-heading";
 import { GlassCard } from "@/app/(components)/glass-card";
-import { ScrambleText } from "@/app/(components)/scramble-text";
 
 const stack = [
   { label: "Next.js 15 + TypeScript" },
@@ -44,7 +43,7 @@ export function Tech() {
       <SectionHeading
         eyebrow="Stack"
         title="Built for reliable, compliant AI in government."
-        description="Modern web stack with a retrieval-first AI layer, secure by default."
+        description="Short version: a modern web stack with a retrieval-first AI layer, secure by default and straightforward for your IT team to review."
       />
 
       <div className="mt-10 grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
@@ -58,11 +57,7 @@ export function Tech() {
                   className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2"
                 >
                   <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_10px_rgba(93,214,255,0.8)]" />
-                  {item.label.includes("Postgres") || item.label.includes("Row-Level Security") ? (
-                    <ScrambleText text={item.label} durationMs={900} />
-                  ) : (
-                    item.label
-                  )}
+                  {item.label}
                 </li>
               ))}
             </ul>

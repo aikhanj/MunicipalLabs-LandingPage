@@ -15,7 +15,7 @@ export function GlassCard({
   return (
     <Component
       className={cn(
-        "glass relative overflow-hidden transition-transform duration-500 ease-spring-snappy will-change-transform",
+        "glass relative overflow-hidden transition-all duration-300 ease-spring-snappy will-change-transform hover:shadow-2xl hover:shadow-red-500/10",
         className
       )}
     >

@@ -15,26 +15,28 @@ export function SectionHeading({
   align = "left",
   className
 }: SectionHeadingProps) {
+  const isCenter = align === "center";
+
   return (
     <div
       className={cn(
-        "space-y-5",
-        align === "center" ? "mx-auto max-w-2xl text-center" : "",
+        "mt-4",
+        isCenter ? "mx-auto max-w-2xl text-center" : "text-left",
         className
       )}
     >
       {eyebrow ? (
-        <p className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.3rem] text-muted-foreground">
-          <span className="h-px w-6 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+        <p className="text-xs uppercase tracking-[0.35em] text-slate-400">
           {eyebrow}
-          <span className="h-px w-6 bg-gradient-to-r from-transparent via-white/40 to-transparent" />
         </p>
       ) : null}
-      <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+      <h2 className="mt-3 text-4xl font-bold leading-tight text-white md:text-5xl">
         {title}
       </h2>
       {description ? (
-        <p className="text-base text-muted-foreground">{description}</p>
+        <p className="mt-4 text-lg font-semibold text-slate-300 md:text-xl">
+          {description}
+        </p>
       ) : null}
     </div>
   );

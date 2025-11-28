@@ -18,7 +18,6 @@ const commands: Command[] = [
   { label: "Legaside solution", href: "#solution", keywords: ["legaside", "tabs"] },
   { label: "How it works", href: "#how-it-works", keywords: ["steps", "process"] },
   { label: "Security", href: "#security", keywords: ["compliance", "rls"] },
-  { label: "Metrics", href: "#metrics", keywords: ["proof", "logos"] },
   { label: "About", href: "#about", keywords: ["team", "mission"] },
   { label: "Request access", href: "#contact", keywords: ["cta", "form"] }
 ];
