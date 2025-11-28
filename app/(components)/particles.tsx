@@ -62,25 +62,17 @@ export function Particles({ quantity = 20, className }: ParticlesProps) {
             height: particle.size,
             opacity: prefersReducedMotion ? 0.2 : 0.4
           }}
-          animate={
-            prefersReducedMotion
-              ? undefined
-              : {
-                  y: ["-12%", "12%", "-12%"],
-                  x: ["-6%", "6%", "-6%"],
-                  opacity: [0.2, 0.5, 0.2]
-                }
-          }
-          transition={
-            prefersReducedMotion
-              ? undefined
-              : {
-                  duration: particle.duration,
-                  repeat: Infinity,
-                  delay: particle.delay,
-                  ease: "easeInOut"
-                }
-          }
+          animate={{
+            y: ["-12%", "12%", "-12%"],
+            x: ["-6%", "6%", "-6%"],
+            opacity: [0.2, 0.5, 0.2]
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            delay: particle.delay,
+            ease: "easeInOut"
+          }}
         />
       ))}
     </div>

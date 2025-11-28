@@ -6,9 +6,7 @@ import { MagneticButton } from "@/app/(components)/magnetic-button";
 import { Particles } from "@/app/(components)/particles";
 import { Parallax } from "@/app/(components)/parallax";
 import { copy } from "@/content/copy";
-import { cn } from "@/lib/utils";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-import { TypingDemo } from "@/app/(components)/typing-demo";
 import { ScrambleText } from "@/app/(components)/scramble-text";
 
 export function Hero() {
@@ -95,15 +93,15 @@ export function Hero() {
         ]}
         className="absolute inset-0"
       />
-      <Particles quantity={26} className="opacity-80" />
+      <Particles quantity={16} className="opacity-60" />
       <motion.div
-        className="pointer-events-none absolute inset-x-0 -top-32 h-[420px] bg-gradient-to-b from-accent/40 via-accent/10 to-transparent blur-3xl"
+        className="pointer-events-none absolute inset-x-0 -top-32 h-[360px] bg-gradient-to-b from-accent/25 via-accent/8 to-transparent blur-2xl"
         aria-hidden="true"
         style={{ opacity: prefersReducedMotion ? 0.2 : logoOpacity }}
       />
       <div className="mx-auto flex w-[min(1100px,92vw)] flex-col items-center gap-10 text-center">
         <motion.div
-          className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-2 text-xs font-medium uppercase tracking-[0.3rem] text-white/70 shadow-[0_0_40px_rgba(93,214,255,0.35)]"
+          className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-2 text-xs font-medium uppercase tracking-[0.3rem] text-white/70"
           style={{ scale: logoScale, opacity: logoOpacity }}
         >
           Municipal Labs
@@ -137,9 +135,15 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          <MagneticButton 
+          <MagneticButton
+            href="#contact"
+            className="bg-white text-background hover:bg-slate-100/95 hover:text-background"
+          >
+            {copy.hero.ctaPrimary}
+          </MagneticButton>
+          <MagneticButton
             href="https://legaside-v0-frontend.vercel.app/"
-            className="hover:shadow-[0_0_30px_rgba(93,214,255,0.6)] hover:border-accent"
+            className="border border-white/20 bg-transparent text-white hover:bg-white/10"
           >
             {copy.hero.ctaSecondary}
           </MagneticButton>
@@ -166,22 +170,32 @@ export function Hero() {
                 : { repeat: Infinity, duration: 30, ease: "linear" }
             }
           />
-          <div id="problem" className="relative grid gap-10 md:grid-cols-2">
+          <div id="problem" className="relative grid gap-10">
             <div className="space-y-6 text-left">
               <p className="text-sm uppercase tracking-[0.4rem] text-accent">
                 Problem
               </p>
-              <p className="text-pretty text-lg text-muted-foreground md:text-xl">
-                Across local governments, constituent communication remains <Glow>fragmented</Glow>, reactive, and manually managed.
-                Offices still rely on <Glow delay={0.2}>legacy CRMs</Glow> and inbox systems that lack visibility into trends, sentiment, and workload metrics.
-                Council staff spend hours triaging messages, logging 311 cases, and drafting repetitive replies without integrated <Glow delay={0.4}>analytics</Glow> or context.
-                The result is inefficient service delivery, limited <Glow delay={0.6}>accountability</Glow>, and poor <Glow delay={0.8}>data-driven</Glow> decision making.
-                Existing tools like Caucus and Granicus offer basic contact management but fail to unify multi-channel data or provide real-time <Glow delay={1.0}>policy insights</Glow>.
-                <span> </span><Glow delay={1.2}>MunicipalLabs</Glow> was built to modernize that infrastructure.
-              </p>
-            </div>
-            <div className="max-w-xl justify-self-center md:justify-self-end md:self-center">
-              <TypingDemo />
+              <div className="space-y-4 text-pretty text-lg text-muted-foreground md:text-xl">
+                <p>
+                  Across local governments, constituent communication is still{" "}
+                  <Glow>fragmented, reactive, and manual</Glow>.
+                </p>
+                <p>
+                  Staff juggle shared inboxes, 311 portals, and spreadsheets with
+                  limited visibility into{" "}
+                  <Glow delay={0.2}>trends, sentiment, and workload</Glow>.
+                </p>
+                <p>
+                  Council and constituent services teams spend hours triaging
+                  messages and drafting repetitive replies instead of focusing on{" "}
+                  <Glow delay={0.4}>resident outcomes and accountability</Glow>.
+                </p>
+                <p>
+                  <Glow delay={0.6}>MunicipalLabs</Glow> is building the
+                  infrastructure layer that lets offices see what matters most and
+                  respond faster.
+                </p>
+              </div>
             </div>
           </div>
         </div>

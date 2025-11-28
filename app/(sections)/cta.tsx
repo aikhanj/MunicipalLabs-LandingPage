@@ -3,16 +3,18 @@
 import { useActionState, useEffect } from "react";
 import { useFormStatus } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  initialActionState,
-  requestAccessAction
-} from "@/app/(actions)/request-access";
+import { requestAccessAction, type ActionState } from "@/app/(actions)/request-access";
 import { SectionHeading } from "@/app/(components)/section-heading";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { copy } from "@/content/copy";
 import { useAudio } from "@/app/(components)/audio-provider";
+
+const initialActionState: ActionState = {
+  status: "idle",
+  message: ""
+};
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -73,6 +75,9 @@ export function CTA() {
           description={copy.cta.sub}
           align="center"
         />
+        <p className="mt-3 text-sm text-muted-foreground">
+          We work with public-sector teams only. There is a short intake first, then we’ll follow up with your staff before scheduling anything.
+        </p>
 
         <form
           id="cta-form"

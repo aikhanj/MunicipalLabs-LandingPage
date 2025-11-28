@@ -7,10 +7,10 @@ import { MagneticButton } from "./magnetic-button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  {href: "#problem", label: "Problem" },
+  { href: "#product", label: "Problem" },
   { href: "#solution", label: "Product" },
-  { href: "#security", label: "Security" },
-  
+  { href: "#how-it-works", label: "How It Works" },
+  { href: "#security", label: "Security" }
 ];
 
 export function Navbar() {
@@ -36,49 +36,80 @@ export function Navbar() {
   return (
     <motion.header
       className={cn(
-        "sticky top-4 z-50 mx-auto flex w-[min(1100px,94vw)] items-center justify-between rounded-full border border-white/10 bg-transparent px-6 py-3 backdrop-blur-xl transition-all",
-        scrolled ? "shadow-xl shadow-black/40" : ""
+        "sticky z-50 flex w-full justify-center transition-all duration-500",
+        scrolled ? "top-6 px-3" : "top-0 px-0"
       )}
       initial={{ opacity: 0, y: -24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <Link
-        href="#hero"
-        className="flex items-center gap-2 text-sm font-semibold text-white"
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToHash("#hero", "center");
-        }}
+      <div
+        className={cn(
+          "flex items-center justify-between gap-4 transition-all duration-500",
+          scrolled
+            ? "w-[min(1100px,94vw)] rounded-full border border-white/15 bg-neutral-950/80 px-5 py-3 shadow-[0_12px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl"
+            : "w-full rounded-none border-none bg-transparent px-6 py-5 sm:px-10"
+        )}
       >
-        
-        Municipal Labs
-      </Link>
+        <Link
+          href="#hero"
+          className="flex items-center gap-2 text-sm font-semibold text-white"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToHash("#hero", "center");
+          }}
+        >
+          Municipal Labs
+        </Link>
 
-      <nav className="hidden items-center gap-7 text-sm text-muted-foreground/80 md:flex">
-        {navItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="transition-colors hover:text-white"
+        <nav className="hidden items-center gap-7 text-sm text-muted-foreground/80 md:flex">
+          {navItems.map((item) => (
+            <motion.div
+              key={item.href}
+              className="relative"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Link
+                href={item.href}
+                className="relative block transition-colors hover:text-white"
+                onClick={(e) => {
+                  e.preventDefault();
+                  // Product -> start of "Meet Legaside"
+                  const isProduct = item.href === "#solution";
+                  scrollToHash(item.href, isProduct ? "start" : "center");
+                }}
+              >
+                {item.label}
+                <motion.span
+                  className="absolute bottom-0 left-0 h-[1px] w-full bg-white origin-left"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                />
+                <motion.span
+                  className="absolute inset-0 rounded-md bg-white/5 -z-10"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                />
+              </Link>
+            </motion.div>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-3">
+          <MagneticButton
+            className="hidden md:inline-flex bg-white text-background hover:bg-slate-100/95 hover:text-background"
+            href="#contact"
             onClick={(e) => {
               e.preventDefault();
-              // Product -> start of "Meet Legaside"
-              const isProduct = item.href === "#solution";
-              scrollToHash(item.href, isProduct ? "start" : "center");
+              scrollToHash("#contact", "center");
             }}
           >
-            {item.label}
-          </Link>
-        ))}
-      </nav>
-
-      <div className="flex items-center gap-3">
-        
-        <MagneticButton className="hidden md:inline-flex" href="https://legaside-v0-frontend.vercel.app/">
-          Try Legaside
-        </MagneticButton>
-        
+            Request access
+          </MagneticButton>
+        </div>
       </div>
     </motion.header>
   );

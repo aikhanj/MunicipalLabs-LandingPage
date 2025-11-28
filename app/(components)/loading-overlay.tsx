@@ -73,7 +73,7 @@ export function LoadingOverlay({
 				{/* mask any subpixel flicker at the very top edge during fade */}
 				<div className="pointer-events-none absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-black to-transparent" />
 				<div className="w-[min(640px,92vw)]">
-					<div className="mb-6 text-center font-mono text-xs uppercase tracking-[0.35rem] text-[rgb(93,214,255)]/80">
+					<div className="mb-6 text-center font-mono text-xs uppercase tracking-[0.35rem] text-white/80">
 						<motion.span
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
@@ -82,9 +82,9 @@ export function LoadingOverlay({
 							Initializing Secure Session
 						</motion.span>
 					</div>
-					<div className="relative h-3 w-full overflow-hidden rounded bg-[rgba(93,214,255,0.12)]">
+					<div className="relative h-3 w-full overflow-hidden rounded bg-white/10">
 						<motion.div
-							className="absolute inset-y-0 left-0 bg-[rgb(93,214,255)] shadow-[0_0_34px_rgba(93,214,255,0.7)]"
+							className="absolute inset-y-0 left-0 bg-white shadow-[0_0_34px_rgba(255,255,255,0.7)]"
 							style={{ width: `${progress}%` }}
 							initial={{ width: 0 }}
 							animate={{ width: `${progress}%` }}
@@ -92,12 +92,12 @@ export function LoadingOverlay({
 						/>
 						{/* scan line */}
 						<motion.div
-							className="absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-[rgba(93,214,255,0.7)] to-transparent mix-blend-screen"
+							className="absolute inset-y-0 w-24 bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.7)] to-transparent mix-blend-screen"
 							animate={{ x: ["-10%", "110%"] }}
 							transition={{ repeat: Infinity, duration: 1.6, ease: "linear" }}
 						/>
 					</div>
-					<div className="mt-3 flex items-center justify-between font-mono text-[11px] text-[rgb(93,214,255)]/80">
+					<div className="mt-3 flex items-center justify-between font-mono text-[11px] text-white/80">
 						<span>{progress.toString().padStart(3, "0")}%</span>
 						<span className="opacity-70">/ / MUNICIPAL LABS</span>
 					</div>
@@ -106,7 +106,7 @@ export function LoadingOverlay({
 							{showWelcome ? (
 								<motion.span
 									key="welcome"
-									className="text-[rgb(93,214,255)]"
+									className="text-white"
 									initial={{ y: 12, opacity: 0 }}
 									animate={{ y: 0, opacity: 1 }}
 									exit={{ y: -12, opacity: 0 }}
@@ -117,7 +117,7 @@ export function LoadingOverlay({
 							) : (
 								<motion.span
 									key="auth"
-									className="text-[rgba(93,214,255,0.8)]"
+									className="text-white/80"
 									initial={{ y: 12, opacity: 0 }}
 									animate={{ y: 0, opacity: 1 }}
 									exit={{ y: -12, opacity: 0 }}

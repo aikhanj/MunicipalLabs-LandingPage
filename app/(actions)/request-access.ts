@@ -19,6 +19,8 @@ const schema = z.object({
   teamSize: z.string().optional()
 });
 
+const REQUEST_ACCESS_INBOX = process.env.REQUEST_ACCESS_INBOX;
+
 export async function requestAccessAction(
   _prevState: ActionState,
   formData: FormData
@@ -38,19 +40,58 @@ export async function requestAccessAction(
     };
   }
 
-  await new Promise((resolve) => setTimeout(resolve, 600));
+  if (!REQUEST_ACCESS_INBOX || !process.env.RESEND_API_KEY) {
+    console.error(
+      "Request access form is missing RESEND_API_KEY or REQUEST_ACCESS_INBOX env vars."
+    );
+    return {
+      status: "error",
+      message:
+        "Something went wrong on our side. Please email us directly and we’ll get you set up."
+    };
+  }
 
-  console.info("MunicipalLabs request access submission", parsed.data);
+  const { email, organization, teamSize } = parsed.data;
 
-  return {
-    status: "success",
-    message:
-      "Thanks for reaching out. We'll share pilot details within one business day."
-  };
+  try {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`
+      },
+      body: JSON.stringify({
+        from: "MunicipalLabs <no-reply@municipallabs.ai>",
+        to: [REQUEST_ACCESS_INBOX],
+        subject: "New Legaside early access request",
+        text: [
+          `Email: ${email}`,
+          `Organization: ${organization}`,
+          `Team size: ${teamSize || "n/a"}`
+        ].join("\n")
+      })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Resend API error:", errorText);
+      throw new Error("Failed to send email via Resend");
+    }
+
+    console.info("MunicipalLabs request access submission", parsed.data);
+
+    return {
+      status: "success",
+      message:
+        "Thanks for reaching out. We'll share pilot details within one business day."
+    };
+  } catch (error) {
+    console.error("Error sending request access email", error);
+    return {
+      status: "error",
+      message:
+        "We couldn't send your request just now. Please email us directly and we’ll follow up."
+    };
+  }
 }
-
-export const initialActionState: ActionState = {
-  status: "idle",
-  message: ""
-};
 

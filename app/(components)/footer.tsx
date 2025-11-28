@@ -33,7 +33,7 @@ export function Footer({ className }: FooterProps) {
       )}
     >
       <div className="mx-auto grid w-[min(1100px,92vw)] gap-10 md:grid-cols-5">
-        <div className="md:col-span-2 space-y-4">
+        <div className="md:col-span-3 space-y-4">
           <div className="flex items-center gap-3 text-white">
             
             <div>
@@ -51,22 +51,55 @@ export function Footer({ className }: FooterProps) {
           </p>
           
         </div>
-        <div className="grid gap-6 text-sm text-muted-foreground md:col-span-3 md:grid-cols-3">
-          
-          
+        <div className="md:col-span-2 flex items-start justify-start md:justify-end">
+          <div className="text-left md:text-right text-xs text-muted-foreground/60">
+          <p className="mb-2 text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+            Legal &amp; security
+          </p>
+          <div className="flex flex-col gap-1.5">
+            <Link
+              href="/terms-of-service"
+              className="group inline-flex items-center gap-1 text-xs text-muted-foreground/80 transition hover:text-white whitespace-nowrap"
+            >
+              <span>Terms of Service</span>
+              <span className="inline-flex h-4 w-4 translate-x-0 items-center justify-center rounded border border-white/10 text-[0.55rem] opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100">
+                ↗
+              </span>
+            </Link>
+            <Link
+              href="/privacy-policy"
+              className="group inline-flex items-center gap-1 text-xs text-muted-foreground/80 transition hover:text-white whitespace-nowrap"
+            >
+              <span>Privacy Policy</span>
+              <span className="inline-flex h-4 w-4 translate-x-0 items-center justify-center rounded border border-white/10 text-[0.55rem] opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100">
+                ↗
+              </span>
+            </Link>
+            <Link
+              href="/data-processing-agreement"
+              className="group inline-flex items-center gap-1 text-xs text-muted-foreground/80 transition hover:text-white whitespace-nowrap"
+            >
+              <span>Data Processing Agreement</span>
+              <span className="inline-flex h-4 w-4 translate-x-0 items-center justify-center rounded border border-white/10 text-[0.55rem] opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100">
+                ↗
+              </span>
+            </Link>
+            <Link
+              href="/incident-response-plan"
+              className="group inline-flex items-center gap-1 text-xs text-muted-foreground/80 transition hover:text-white whitespace-nowrap"
+            >
+              <span>Incident Response Plan</span>
+              <span className="inline-flex h-4 w-4 translate-x-0 items-center justify-center rounded border border-white/10 text-[0.55rem] opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100">
+                ↗
+              </span>
+            </Link>
+          </div>
+          </div>
         </div>
       </div>
-      <div className="mx-auto mt-10 flex w-[min(1100px,92vw)] flex-col gap-2 text-xs text-muted-foreground/60 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto mt-10 w-[min(1100px,92vw)] text-xs text-muted-foreground/60">
         <p>© {new Date().getFullYear()} MunicipalLabs. All rights reserved.</p>
-        <div className="flex gap-4">
-          <Link href="/privacy" className="transition hover:text-white">
-            Privacy
-          </Link>
-          <Link href="/terms" className="transition hover:text-white">
-            Terms
-          </Link>
         </div>
-      </div>
     </footer>
   );
 }

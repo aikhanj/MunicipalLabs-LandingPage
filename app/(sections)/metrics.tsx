@@ -6,9 +6,14 @@ import { Metric } from "@/app/(components)/metric";
 import { LogoCloud } from "@/app/(components)/logo-cloud";
 
 const metrics = [
-  { value: 72, suffix: "%", label: "Faster first responses" },
-  { value: 4.7, suffix: "x", label: "More messages classified per hour", decimals: 1 },
-  { value: 98, suffix: "%", label: "Drafts approved without edits" }
+  { value: 72, suffix: "%", label: "Faster first responses in pilot teams" },
+  {
+    value: 4.7,
+    suffix: "x",
+    label: "More messages classified per staff hour in pilots",
+    decimals: 1
+  },
+  { value: 98, suffix: "%", label: "Drafts approved without major edits" }
 ];
 
 const testimonials = [
@@ -42,7 +47,7 @@ export function Metrics() {
       <SectionHeading
         eyebrow="Proof"
         title="Proven impact in pilots."
-        description="Pilot cities are seeing faster replies, happier residents, and dashboards leadership can finally trust."
+        description="Pilot cities are seeing faster replies to residents, cleared-out backlogs, and dashboards leadership can finally trust."
         align="center"
       />
 
@@ -56,6 +61,9 @@ export function Metrics() {
           <LogoCloud className="rounded-3xl border border-white/10 bg-white/5 p-6" />
         </div>
         <div className="space-y-6">
+          <p className="text-xs uppercase tracking-[0.3rem] text-muted-foreground/70">
+            From early pilots (anonymized)
+          </p>
           {testimonials.map((testimonial, index) => (
             <motion.blockquote
               key={testimonial.org}
