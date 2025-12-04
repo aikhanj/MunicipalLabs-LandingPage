@@ -158,10 +158,10 @@ export default function TermsOfServicePage() {
             <p>
               Email:{" "}
               <a
-                href="mailto:mm4855@princeton.edu"
+                href="mailto:mason@municipallabs.ai"
                 className="text-muted-foreground underline underline-offset-4 transition hover:text-white"
               >
-                mm4855@princeton.edu
+                mason@municipallabs.ai
               </a>
             </p>
           </div>
