@@ -1,8 +1,8 @@
 export const copy = {
   hero: {
-    title: "AI infrastructure for faster, accountable GovOps",
+    title: "Software infrastructure for public sector operations",
     subtitle:
-      "MunicipalLabs builds AI infrastructure for public-sector teams. Our first product, Legaside, turns your constituent inbox into an AI-powered CRM — so your office can respond to residents faster, see issues by neighborhood, and show clear results to council and the public.",
+      "MunicipalLabs builds Software infrastructure for public sector operations. Our first product, Legaside, turns your constituent inbox into a software tool so your office can respond to residents faster, see issues by neighborhood, and show clear results to council and the public.",
     ctaPrimary: "Get early access",
     ctaSecondary: "See Legaside"
   },

@@ -28,14 +28,14 @@ const tabConfig = [
   {
     value: "inbox",
     label: "Inbox",
-    headline: "AI triage for every channel.",
+    headline: "Software triage for every channel.",
     body: "Legaside listens across email aliases, 311 portals, and public inboxes. Topics, urgency, and compliance flags are auto-annotated within seconds so staff see what needs attention first.",
     highlights: ["Municipal tax portal", "Emergency alerts", "311 overflow"]
   },
   {
     value: "summaries",
     label: "Summaries",
-    headline: "Briefings ready before stand-up.",
+    headline: "Software briefings ready before stand-up.",
     body: "Summaries distill what is new, what is trending, and what needs a decision. Share with council, the mayor’s office, or export into your existing ticketing and reporting tools.",
     highlights: ["Policy-ready briefs", "Instant context packs", "One-click exports"]
   },

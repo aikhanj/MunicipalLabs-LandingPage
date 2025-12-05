@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MagneticButton } from "./magnetic-button";
@@ -53,13 +54,19 @@ export function Navbar() {
       >
         <Link
           href="#hero"
-          className="flex items-center gap-2 text-sm font-semibold text-white"
+          className="flex items-center gap-2"
           onClick={(e) => {
             e.preventDefault();
             scrollToHash("#hero", "center");
           }}
         >
-          Municipal Labs
+          <Image
+            src="/logos/logo-icon.png"
+            alt="Municipal Labs"
+            width={32}
+            height={32}
+            className="h-8 w-auto"
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm text-muted-foreground/80 md:flex">

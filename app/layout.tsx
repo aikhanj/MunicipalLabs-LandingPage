@@ -4,9 +4,32 @@ import React from "react";
 import { AudioProvider } from "@/app/(components)/audio-provider";
 
 export const metadata: Metadata = {
-  title: "Municipal Labs",
+  title: "Municipal Labs | Utilizing Software to expedite public sector operations",
   description:
-    "Expediting GovOps through AI infrastructure",
+    "Expediting public sector operations through software",
+  icons: {
+    icon: "/logos/logo-iconblack.png",
+    shortcut: "/logos/logo-iconblack.png",
+    apple: "/logos/logo-iconblack.png",
+  },
+  openGraph: {
+    title: "Municipal Labs | Utilizing Software to expedite public sector operations",
+    description: "Expediting public sector operations through software",
+    images: [
+      {
+        url: "/logos/logo-iconblack.png",
+        width: 1200,
+        height: 630,
+        alt: "Municipal Labs Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Municipal Labs | Utilizing Software to expedite public sector operations",
+    description: "Expediting public sector operations through software",
+    images: ["/logos/logo-iconblack.png"],
+  },
 };
 
 export default function RootLayout({

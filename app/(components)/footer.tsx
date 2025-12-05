@@ -46,7 +46,7 @@ export function Footer({ className }: FooterProps) {
             </div>
           </div>
           <p className="text-sm text-muted-foreground/80">
-            Modern AI tooling built for regulated teams. Reach out for pilots,
+            Modern software built for public sector teams. Reach out for pilots,
             partnerships, and press inquiries.
           </p>
           
