@@ -7,7 +7,6 @@ import { Particles } from "@/app/(components)/particles";
 import { Parallax } from "@/app/(components)/parallax";
 import { copy } from "@/content/copy";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-import { ScrambleText } from "@/app/(components)/scramble-text";
 
 export function Hero() {
   const Glow = ({
@@ -111,13 +110,7 @@ export function Hero() {
           className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white md:text-6xl"
           style={{ y: headlineY }}
         >
-          <ScrambleText
-            text={copy.hero.title}
-            className="inline-block font-mono"
-            durationMs={1200}
-            charset="@#$%&*+=-_"
-            delayMs={120}
-          />
+          {copy.hero.title}
         </motion.h1>
 
         <motion.p

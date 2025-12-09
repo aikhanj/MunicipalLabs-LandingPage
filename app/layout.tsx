@@ -1,7 +1,20 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
 import React from "react";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { AudioProvider } from "@/app/(components)/audio-provider";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Municipal Labs | Utilizing Software to expedite public sector operations",
@@ -38,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <body className="bg-background text-foreground antialiased" suppressHydrationWarning>
         <div
           aria-hidden

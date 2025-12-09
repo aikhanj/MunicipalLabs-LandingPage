@@ -18,6 +18,10 @@ const config: Config = {
       }
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "monospace"],
+      },
       colors: {
         background: "rgb(6, 7, 11)",
         foreground: "rgb(244, 245, 248)",

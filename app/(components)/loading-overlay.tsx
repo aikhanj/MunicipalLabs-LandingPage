@@ -99,7 +99,6 @@ export function LoadingOverlay({
 					</div>
 					<div className="mt-3 flex items-center justify-between font-mono text-[11px] text-white/80">
 						<span>{progress.toString().padStart(3, "0")}%</span>
-						<span className="opacity-70">/ / MUNICIPAL LABS</span>
 					</div>
 					<div className="mt-10 text-center font-mono text-lg tracking-widest">
 						<AnimatePresence mode="wait">

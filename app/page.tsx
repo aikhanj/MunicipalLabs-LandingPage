@@ -7,25 +7,22 @@ import { Security } from "@/app/(sections)/security";
 import { CTA } from "@/app/(sections)/cta";
 import { Footer } from "@/app/(components)/footer";
 import { CommandPalette } from "@/app/(components)/command-palette";
-import { InitialLoader } from "@/app/(components)/initial-loader";
 
 export default function Page() {
   return (
-    <InitialLoader>
-      <>
-        <Navbar />
-        <CommandPalette />
-        <main id="content" className="relative">
-          <Hero />
-          <Problem />
-          <Solution />
-          <HowItWorks />
-          <Security />
-          <CTA />
-        </main>
-        <Footer />
-      </>
-    </InitialLoader>
+    <>
+      <Navbar />
+      <CommandPalette />
+      <main id="content" className="relative">
+        <Hero />
+        <Problem />
+        <Solution />
+        <HowItWorks />
+        <Security />
+        <CTA />
+      </main>
+      <Footer />
+    </>
   );
 }
 
