@@ -50,11 +50,6 @@ export function Hero() {
   });
   const prefersReducedMotion = usePrefersReducedMotion();
 
-  const logoScale = useTransform(
-    scrollYProgress,
-    [0, 1],
-    prefersReducedMotion ? [1, 1] : [1, 0.85]
-  );
   const logoOpacity = useTransform(
     scrollYProgress,
     [0, 1],
@@ -99,15 +94,11 @@ export function Hero() {
         style={{ opacity: prefersReducedMotion ? 0.2 : logoOpacity }}
       />
       <div className="mx-auto flex w-[min(1100px,92vw)] flex-col items-center gap-10 text-center">
-        <motion.div
-          className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-2 text-xs font-medium uppercase tracking-[0.3rem] text-white/70"
-          style={{ scale: logoScale, opacity: logoOpacity }}
-        >
-          Municipal Labs
-        </motion.div>
-
         <motion.h1
           className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white md:text-6xl"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           style={{ y: headlineY }}
         >
           {copy.hero.title}
