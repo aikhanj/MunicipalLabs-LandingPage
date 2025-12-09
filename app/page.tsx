@@ -1,5 +1,6 @@
 import { Navbar } from "@/app/(components)/navbar";
 import { Hero } from "@/app/(sections)/hero";
+import { Approach } from "@/app/(sections)/approach";
 import { Problem } from "@/app/(sections)/problem";
 import { Solution } from "@/app/(sections)/solution";
 import { HowItWorks } from "@/app/(sections)/how-it-works";
@@ -15,6 +16,7 @@ export default function Page() {
       <CommandPalette />
       <main id="content" className="relative">
         <Hero />
+        <Approach />
         <Problem />
         <Solution />
         <HowItWorks />

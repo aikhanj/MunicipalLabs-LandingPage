@@ -1,43 +1,51 @@
 export const copy = {
   hero: {
-    title: "Software infrastructure for public sector operations",
+    title: "Software tools built for local government",
     subtitle:
-      "MunicipalLabs builds Software infrastructure for public sector operations. Our first product, Legaside, turns your constituent inbox into a software tool so your office can respond to residents faster, see issues by neighborhood, and show clear results to council and the public.",
+      "We're building a platform of tools that help public-sector teams work faster and serve residents better. Legaside is our first product.",
     ctaPrimary: "Get early access",
     ctaSecondary: "See Legaside"
   },
   problem: {
-    heading: "The public inbox is on fire.",
-    subheadline: "Overflowing inboxes. Fragmented tools. Zero visibility.",
-    description: "Municipal teams drown in emails, portals, and spreadsheets instead of serving residents.",
+    heading: "The Challenge",
+    subheadline: "Constituent communication happens across fragmented systems",
+    description: "Municipal teams manage high volumes of resident requests across email, portals, and spreadsheets without a unified view.",
     bullets: [
-      "High volume, low visibility.",
-      "Thousands of messages scattered across portals and inboxes.",
-      "Manual triage, slow follow-up.",
-      "Staff copy, forward, and track requests in spreadsheets.",
-      "No shared view of resident needs.",
-      "Leadership can't see what's trending or where service is slipping."
-    ],
-    chaos: {
-      label: "Today's reality",
-      title: "Scattered across three systems. Zero shared view.",
-      stats: [
-        { label: "Inbox", value: "172 unread", color: "red" },
-        { label: "Shared spreadsheet", value: "19 editors", color: "yellow" },
-        { label: "Citizen hotline", value: "3 voicemails", color: "orange" }
-      ],
-      badge: "Manual triage required"
-    }
+      "High message volume across multiple channels",
+      "Requests arrive via email, 311 portals, and public inboxes",
+      "Manual triage and tracking",
+      "Staff use spreadsheets and forwarding to coordinate responses",
+      "Limited visibility into trends",
+      "Leadership lacks real-time insights into service requests and response times"
+    ]
+  },
+  approach: {
+    heading: "Our Approach",
+    cards: [
+      {
+        title: "Built for Government",
+        description: "Designed specifically for public-sector workflows, compliance requirements, and accountability standards."
+      },
+      {
+        title: "Multiple Tools, One Platform",
+        description: "We're building an integrated suite of tools that work together to streamline constituent services."
+      },
+      {
+        title: "Security-First Design",
+        description: "Enterprise-grade security, data isolation, and audit logging built into every layer."
+      }
+    ]
   },
   solution: {
-    heading: "Meet Legaside.",
-    sub: "An AI inbox and CRM layer purpose-built for government work.",
+    heading: "Legaside",
+    sub: "Intelligent inbox for constituent services",
     points: [
-      "Connect your existing inboxes in minutes.",
-      "Automatic topic and priority labels on every message.",
-      "Draft responses you can trust — with staff approval before anything is sent.",
-      "Dashboards that show what matters this week, not last quarter."
-    ]
+      "Automatically categorize and prioritize incoming messages",
+      "Generate draft responses with full staff review and approval",
+      "Track resolution times and identify service trends",
+      "Connect existing email and 311 systems in minutes"
+    ],
+    learnMoreUrl: "https://legaside.municipallabs.ai"
   },
   security: {
     heading: "Security built in.",
