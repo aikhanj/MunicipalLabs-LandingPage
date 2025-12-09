@@ -74,16 +74,16 @@ const steps: StepConfig[] = [
 function StepPreview({ type }: { type: StepPreviewType }) {
   if (type === "sources") {
     return (
-      <div className="mt-5 flex items-center gap-2 rounded-xl bg-black/40 p-3 text-[11px] text-muted-foreground/80">
-        <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-2 py-1">
+      <div className="mt-5 flex items-center gap-2 rounded-xl bg-muted dark:bg-muted/50 p-3 text-[11px] text-muted-foreground/80">
+        <span className="inline-flex items-center gap-1 rounded-full bg-card dark:bg-muted/20 px-2 py-1">
           <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
           Inbox
         </span>
-        <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-2 py-1">
+        <span className="inline-flex items-center gap-1 rounded-full bg-card dark:bg-muted/20 px-2 py-1">
           <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
           Portal
         </span>
-        <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-2 py-1">
+        <span className="inline-flex items-center gap-1 rounded-full bg-card dark:bg-muted/20 px-2 py-1">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
           Spreadsheet
         </span>
@@ -96,7 +96,7 @@ function StepPreview({ type }: { type: StepPreviewType }) {
 
   if (type === "labels") {
     return (
-      <div className="mt-5 space-y-1.5 rounded-xl bg-black/40 p-3 text-[11px]">
+      <div className="mt-5 space-y-1.5 rounded-xl bg-muted dark:bg-muted/50 p-3 text-[11px]">
         {[
           { subject: "Noise complaint – Elm St", tag: "High priority" },
           { subject: "Public records request", tag: "Records" },
@@ -104,7 +104,7 @@ function StepPreview({ type }: { type: StepPreviewType }) {
         ].map((row) => (
           <div
             key={row.subject}
-            className="flex items-center justify-between rounded-lg bg-white/5 px-2 py-1.5 text-muted-foreground/85"
+            className="flex items-center justify-between rounded-lg bg-card dark:bg-muted/20 px-2 py-1.5 text-muted-foreground/85"
           >
             <span className="truncate">{row.subject}</span>
             <span className="ml-2 shrink-0 rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] text-amber-200">
@@ -117,7 +117,7 @@ function StepPreview({ type }: { type: StepPreviewType }) {
   }
 
   return (
-    <div className="mt-5 space-y-1.5 rounded-xl bg-black/40 p-3 text-[11px] text-muted-foreground/85">
+    <div className="mt-5 space-y-1.5 rounded-xl bg-muted dark:bg-muted/50 p-3 text-[11px] text-muted-foreground/85">
       {[
         { label: "Draft response approved", done: true },
         { label: "Workflow triggered", done: true },
@@ -125,14 +125,14 @@ function StepPreview({ type }: { type: StepPreviewType }) {
       ].map((item) => (
         <div
           key={item.label}
-          className="flex items-center gap-2 rounded-lg bg-white/5 px-2 py-1.5"
+          className="flex items-center gap-2 rounded-lg bg-card dark:bg-muted/20 px-2 py-1.5"
         >
           <span
             className={
               "flex h-4 w-4 items-center justify-center rounded-full border " +
               (item.done
                 ? "border-emerald-400 bg-emerald-500/20 text-emerald-100"
-                : "border-white/20 text-white/40")
+                : "border-border text-foreground/40")
             }
           >
             {item.done ? "✓" : ""}
@@ -219,14 +219,14 @@ function StepCard({
       aria-pressed={isActive}
     >
       <GlassCard
-        className={`flex h-full flex-col rounded-2xl bg-white/5 px-7 py-7 ${
+        className={`flex h-full flex-col rounded-2xl bg-card dark:bg-muted/20 px-7 py-7 ${
           isActive ? step.accentBorder : ""
         } ${isActive ? "ring-1 ring-accent/70" : "opacity-80 hover:opacity-100"}`}
       >
         <div className="flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
           <span
             className={`flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-semibold ${
-              isActive ? step.accentChip : "bg-white/10 text-white/80"
+              isActive ? step.accentChip : "bg-muted/60 dark:bg-muted/30 text-foreground/80"
             }`}
           >
             {step.step}
@@ -234,23 +234,23 @@ function StepCard({
           <span>{step.label}</span>
         </div>
 
-        <h3 className="mt-6 text-xl font-semibold text-white">
+        <h3 className="mt-6 text-xl font-semibold text-foreground">
           {step.title}
         </h3>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
           {step.description}
         </p>
 
-        <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-[11px] text-muted-foreground/90">
+        <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-card dark:bg-muted/20 px-3 py-1 text-[11px] text-muted-foreground/90">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          <span className="font-medium text-white/90">{step.metricValue}</span>
+          <span className="font-medium text-foreground/90">{step.metricValue}</span>
           <span className="text-muted-foreground/80">{step.metricLabel}</span>
         </div>
 
         <StepPreview type={step.previewType} />
 
-        <div className="mt-5 flex items-center gap-2 border-t border-white/5 pt-3 text-[11px] text-muted-foreground/80">
-          <span className="rounded-full bg-white/5 px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-muted-foreground/70">
+        <div className="mt-5 flex items-center gap-2 border-t border-border/20 pt-3 text-[11px] text-muted-foreground/80">
+          <span className="rounded-full bg-card dark:bg-muted/20 px-2 py-0.5 text-[10px] uppercase tracking-[0.2em] text-muted-foreground/70">
             Before
           </span>
           <span className="truncate">{step.before}</span>
@@ -303,19 +303,12 @@ export function HowItWorks() {
       aria-labelledby="how-heading"
     >
       <div className="mt-2 text-center">
-        <p className="text-xs uppercase tracking-[0.35em] text-slate-400">
-          Human in the loop
-        </p>
         <h2
           id="how-heading"
-          className="mt-3 text-4xl font-bold leading-tight text-white md:text-5xl"
+          className="mt-3 text-4xl font-bold leading-tight text-foreground md:text-5xl"
         >
           How Legaside keeps cities responsive.
         </h2>
-        <p className="mx-auto mt-4 max-w-3xl text-lg font-semibold text-slate-300 md:text-xl">
-          We deliver fast automation without sacrificing oversight. Staff stay in
-          control while Legaside handles the repetitive lift.
-        </p>
       </div>
 
       <div className="relative mt-14">
@@ -334,14 +327,14 @@ export function HowItWorks() {
 
       <section
         aria-label="Noise complaint journey through Legaside"
-        className="mt-12 rounded-3xl border border-white/10 bg-black/40 p-[1px]"
+        className="mt-12 rounded-3xl border border-border bg-muted dark:bg-muted/50 p-[1px]"
       >
-        <GlassCard className="flex flex-col gap-6 rounded-[calc(theme(borderRadius.3xl)-1px)] bg-gradient-to-br from-white/5 via-transparent to-white/5 px-6 py-6 md:flex-row md:items-stretch md:px-8 md:py-7">
+        <GlassCard className="flex flex-col gap-6 rounded-[calc(theme(borderRadius.3xl)-1px)] bg-card dark:bg-muted/20 px-6 py-6 md:flex-row md:items-stretch md:px-8 md:py-7">
           <div className="flex-1 space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
               See a request move through Legaside
             </p>
-            <h3 className="text-lg font-semibold text-white">
+            <h3 className="text-lg font-semibold text-foreground">
               {scenarioStages[effectiveIndex].title}
             </h3>
             <p className="text-sm text-muted-foreground">
@@ -365,8 +358,8 @@ export function HowItWorks() {
                     onClick={() => setActiveIndex(index)}
                     className={`flex h-5 w-5 items-center justify-center rounded-full border text-[10px] transition ${
                       effectiveIndex === index
-                        ? "border-accent bg-accent/20 text-white"
-                        : "border-white/20 text-muted-foreground hover:border-accent/60"
+                        ? "border-accent bg-accent/20 text-foreground"
+                        : "border-border text-muted-foreground hover:border-accent/60"
                     }`}
                     aria-label={`Go to step ${step.step}`}
                   >
@@ -378,25 +371,25 @@ export function HowItWorks() {
           </div>
 
           <div className="mt-4 flex-1 md:mt-0">
-            <div className="relative h-full overflow-hidden rounded-2xl border border-white/10 bg-black/60 p-4 text-xs text-muted-foreground">
+            <div className="relative h-full overflow-hidden rounded-2xl border border-border bg-muted dark:bg-muted/40 p-4 text-xs text-muted-foreground">
               {effectiveIndex === 0 && (
                 <div className="space-y-3">
-                  <div className="rounded-xl bg-white/5 p-3">
+                  <div className="rounded-xl bg-card dark:bg-muted/20 p-3">
                     <div className="flex items-center justify-between text-[11px] text-muted-foreground/80">
                       <span>Inbox · Constituent</span>
                       <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] text-amber-200">
                         New
                       </span>
                     </div>
-                    <p className="mt-2 text-sm text-white">
+                    <p className="mt-2 text-sm text-foreground">
                       “Hi, we’ve had construction noise on Elm St past midnight all week…”
                     </p>
                   </div>
                   <div className="flex items-center gap-2 text-[11px]">
-                    <span className="rounded-full bg-white/5 px-2 py-0.5">
+                    <span className="rounded-full bg-card dark:bg-muted/20 px-2 py-0.5">
                       Source: Shared inbox
                     </span>
-                    <span className="rounded-full bg-white/5 px-2 py-0.5">
+                    <span className="rounded-full bg-card dark:bg-muted/20 px-2 py-0.5">
                       Linked: 2 portal reports
                     </span>
                   </div>
@@ -412,7 +405,7 @@ export function HowItWorks() {
                     ].map((subject, i) => (
                       <div
                         key={subject}
-                        className="flex items-center justify-between rounded-lg bg-white/5 px-2 py-1.5"
+                        className="flex items-center justify-between rounded-lg bg-card dark:bg-muted/20 px-2 py-1.5"
                       >
                         <span className="truncate text-[11px] text-muted-foreground/90">
                           {subject}
@@ -437,11 +430,11 @@ export function HowItWorks() {
               )}
               {effectiveIndex === 2 && (
                 <div className="space-y-3">
-                  <div className="rounded-xl bg-white/5 p-3">
+                  <div className="rounded-xl bg-card dark:bg-muted/20 p-3">
                     <p className="text-[11px] text-muted-foreground/80">
                       Draft to resident
                     </p>
-                    <p className="mt-2 text-sm text-white">
+                    <p className="mt-2 text-sm text-foreground">
                       “Thanks for flagging the late-night construction on Elm St. City code
                       limits work after 10pm. We’ve routed this to Enforcement, who will…”
                     </p>

@@ -70,7 +70,7 @@ export function Security() {
         </div>
       </div>
 
-      <div className="mt-8 rounded-3xl border border-white/10 bg-black/40 p-[1px]">
+      <div className="mt-8 rounded-3xl border border-border bg-muted dark:bg-muted/50 p-[1px]">
         <GlassCard className="relative overflow-hidden rounded-[calc(theme(borderRadius.3xl)-1px)] bg-gradient-to-br from-emerald-500/10 via-transparent to-white/5 px-5 py-7 md:px-8 md:py-8">
           {/* Subtle security atmosphere */}
           <div aria-hidden className="pointer-events-none absolute inset-0">
@@ -100,7 +100,7 @@ export function Security() {
                   transition={{ duration: 0.45, ease: "easeOut" }}
                   className="group h-full"
                 >
-                  <GlassCard className="flex h-full flex-col rounded-2xl border border-white/10 bg-black/55 px-6 py-6">
+                  <GlassCard className="flex h-full flex-col rounded-2xl border border-border bg-card dark:bg-slate-900/90 backdrop-blur-sm px-6 py-6">
                     <div className="flex items-start gap-4">
                       <motion.span
                         custom={index}
@@ -108,7 +108,7 @@ export function Security() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.6 }}
-                        className="mt-1 grid h-11 w-11 place-items-center rounded-full bg-emerald-500/15 shadow-[0_0_30px_rgba(16,185,129,0.55)] ring-1 ring-inset ring-emerald-400/40 group-hover:bg-emerald-500/25 group-hover:ring-emerald-300/80"
+                        className="mt-1 grid h-11 w-11 flex-shrink-0 place-items-center rounded-full bg-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.55)] ring-1 ring-inset ring-emerald-400/50 group-hover:bg-emerald-500/30 group-hover:ring-emerald-300/80"
                       >
                         <motion.div
                           initial={{ scale: 0.85, opacity: 0 }}
@@ -132,10 +132,10 @@ export function Security() {
                       </motion.span>
 
                       <div className="flex-1">
-                        <h3 className="font-mono text-sm text-emerald-200">
+                        <h3 className="font-mono text-sm font-medium text-emerald-300">
                           {bullet.title}
                         </h3>
-                        <p className="mt-2 text-sm text-muted-foreground">
+                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                           {bullet.body}
                         </p>
                         <motion.div
@@ -150,51 +150,6 @@ export function Security() {
                   </GlassCard>
                 </motion.div>
               ))}
-            </div>
-
-            <div className="mt-8 border-t border-white/10 pt-4 text-xs text-muted-foreground/90">
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-300">
-                  <span className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-emerald-400/50 bg-emerald-500/15 text-[9px] text-emerald-200">
-                    ✓
-                  </span>
-                  <span>Security documentation</span>
-                </div>
-                <p className="text-[11px] text-muted-foreground">
-                  Formal policies for how we handle constituent and staff data.
-                </p>
-              </div>
-
-              <div className="mt-3 flex flex-wrap gap-2">
-                <a
-                  href="/privacy-policy"
-                  className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-[11px] font-medium text-slate-100 underline-offset-4 ring-1 ring-white/10 transition hover:bg-emerald-500/15 hover:text-white hover:underline hover:ring-emerald-400/60"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  <span>Privacy Policy</span>
-                </a>
-                <a
-                  href="/terms-of-service"
-                  className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-[11px] font-medium text-slate-100 underline-offset-4 ring-1 ring-white/10 transition hover:bg-emerald-500/15 hover:text-white hover:underline hover:ring-emerald-400/60"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  <span>Terms of Service</span>
-                </a>
-                <a
-                  href="/data-processing-agreement"
-                  className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-[11px] font-medium text-slate-100 underline-offset-4 ring-1 ring-white/10 transition hover:bg-emerald-500/15 hover:text-white hover:underline hover:ring-emerald-400/60"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  <span>Data Processing Agreement</span>
-                </a>
-                <a
-                  href="/incident-response-plan"
-                  className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-[11px] font-medium text-slate-100 underline-offset-4 ring-1 ring-white/10 transition hover:bg-emerald-500/15 hover:text-white hover:underline hover:ring-emerald-400/60"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  <span>Incident Response Plan</span>
-                </a>
-              </div>
             </div>
           </div>
         </GlassCard>

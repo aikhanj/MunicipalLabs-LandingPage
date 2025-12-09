@@ -95,25 +95,6 @@ export function CTA() {
               autoComplete="email"
             />
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="organization">Organization</Label>
-            <Input
-              id="organization"
-              name="organization"
-              placeholder="City of..."
-              required
-              autoComplete="organization"
-            />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="teamSize">Team size (optional)</Label>
-            <Input
-              id="teamSize"
-              name="teamSize"
-              placeholder="15"
-              inputMode="numeric"
-            />
-          </div>
           <SubmitButton />
         </form>
 

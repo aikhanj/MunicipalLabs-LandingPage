@@ -59,16 +59,8 @@ export function MagneticButton({
 
   const handlePointerMoveImpl = useCallback(
     (event: React.PointerEvent<HTMLElement>) => {
-      if (prefersReducedMotion) return;
-      const rect = event.currentTarget.getBoundingClientRect();
-      const offsetX = event.clientX - rect.left - rect.width / 2;
-      const offsetY = event.clientY - rect.top - rect.height / 2;
-      const distance = Math.sqrt(offsetX ** 2 + offsetY ** 2);
-
-      if (distance < magneticDistance) {
-        x.set(offsetX * 0.35);
-        y.set(offsetY * 0.35);
-      }
+      // Magnetic effect disabled
+      return;
     },
     [magneticDistance, prefersReducedMotion, x, y]
   );

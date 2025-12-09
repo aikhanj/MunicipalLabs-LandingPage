@@ -20,19 +20,22 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        serif: ["var(--font-crimson)", "Georgia", "serif"],
         mono: ["var(--font-jetbrains-mono)", "monospace"],
       },
       colors: {
-        background: "rgb(6, 7, 11)",
-        foreground: "rgb(244, 245, 248)",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: "hsl(var(--card))",
         accent: {
-          DEFAULT: "rgb(93, 214, 255)",
-          foreground: "rgb(4, 16, 26)"
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))"
         },
         muted: {
-          DEFAULT: "rgba(255,255,255,0.06)",
-          foreground: "rgba(229, 231, 235, 0.64)"
-        }
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))"
+        },
+        border: "hsl(var(--border))"
       },
       borderRadius: {
         "4xl": "2.25rem"

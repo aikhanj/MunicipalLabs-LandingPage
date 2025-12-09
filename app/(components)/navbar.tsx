@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MagneticButton } from "./magnetic-button";
+import { ThemeToggle } from "./theme-toggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -48,7 +49,7 @@ export function Navbar() {
         className={cn(
           "flex items-center justify-between gap-4 transition-all duration-500",
           scrolled
-            ? "w-[min(1100px,94vw)] rounded-full border border-white/15 bg-neutral-950/80 px-5 py-3 shadow-[0_12px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl"
+            ? "w-[min(1100px,94vw)] rounded-full border border-border bg-card/95 px-5 py-3 shadow-lg backdrop-blur-xl"
             : "w-full rounded-none border-none bg-transparent px-6 py-5 sm:px-10"
         )}
       >
@@ -61,25 +62,23 @@ export function Navbar() {
           }}
         >
           <Image
-            src="/logos/logo-icon.png"
+            src="/logos/logo-iconblack.png"
             alt="Municipal Labs"
             width={32}
             height={32}
-            className="h-8 w-auto"
+            className="h-8 w-auto dark:invert"
           />
         </Link>
 
-        <nav className="hidden items-center gap-7 text-sm text-muted-foreground/80 md:flex">
+        <nav className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
           {navItems.map((item) => (
             <motion.div
               key={item.href}
               className="relative"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <Link
                 href={item.href}
-                className="relative block transition-colors hover:text-white"
+                className="relative block transition-colors hover:text-foreground"
                 onClick={(e) => {
                   e.preventDefault();
                   // Product -> start of "Meet Legaside"
@@ -89,16 +88,10 @@ export function Navbar() {
               >
                 {item.label}
                 <motion.span
-                  className="absolute bottom-0 left-0 h-[1px] w-full bg-white origin-left"
+                  className="absolute bottom-0 left-0 h-[1px] w-full bg-accent origin-left"
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                />
-                <motion.span
-                  className="absolute inset-0 rounded-md bg-white/5 -z-10"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
                 />
               </Link>
             </motion.div>
@@ -106,8 +99,9 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <MagneticButton
-            className="hidden md:inline-flex bg-white text-background hover:bg-slate-100/95 hover:text-background"
+            className="hidden md:inline-flex bg-accent text-foreground hover:bg-accent/90"
             href="#contact"
             onClick={(e) => {
               e.preventDefault();

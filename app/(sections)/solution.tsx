@@ -14,7 +14,7 @@ export function Solution() {
       <div className="text-center">
         <h2
           id="solution-heading"
-          className="text-4xl font-bold leading-tight text-white md:text-5xl"
+          className="font-serif text-4xl font-bold leading-tight text-foreground md:text-5xl"
         >
           {copy.solution.heading}
         </h2>
@@ -24,7 +24,7 @@ export function Solution() {
       </div>
 
       <motion.div
-        className="mx-auto mt-12 max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl md:p-12"
+        className="mx-auto mt-12 max-w-3xl rounded-2xl border border-border bg-card p-8 shadow-sm md:p-12"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -40,10 +40,10 @@ export function Solution() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-accent/30 text-sm text-accent">
+              <div className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-accent/20 text-sm font-semibold text-accent">
                 ✓
               </div>
-              <p className="text-base text-muted-foreground">{point}</p>
+              <p className="text-base leading-relaxed text-foreground">{point}</p>
             </motion.div>
           ))}
         </div>
@@ -57,7 +57,7 @@ export function Solution() {
         >
           <MagneticButton
             href={copy.solution.learnMoreUrl}
-            className="bg-white text-background hover:bg-slate-100/95"
+            className="bg-accent text-foreground hover:bg-accent/90"
           >
             Learn More
           </MagneticButton>

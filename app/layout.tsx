@@ -1,13 +1,21 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
 import React from "react";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Crimson_Pro } from "next/font/google";
 import { AudioProvider } from "@/app/(components)/audio-provider";
+import { ThemeProvider } from "@/app/(components)/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+});
+
+const crimsonPro = Crimson_Pro({
+  subsets: ["latin"],
+  variable: "--font-crimson",
+  display: "swap",
+  weight: ["400", "600", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -51,17 +59,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${crimsonPro.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <body className="bg-background text-foreground antialiased" suppressHydrationWarning>
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10"
-          style={{
-            background:
-              "linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(19, 27, 45, 0.95) 60vh, rgba(6, 7, 11, 1) 100vh), radial-gradient(circle at 20% -10%, rgba(93, 214, 255, 0.35), transparent 55%), radial-gradient(circle at 80% 0%, rgba(149, 128, 255, 0.28), transparent 60%)",
-          }}
-        />
-        <AudioProvider>{children}</AudioProvider>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 bg-background" />
+          <AudioProvider>{children}</AudioProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

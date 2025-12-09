@@ -1,8 +1,8 @@
 export const copy = {
   hero: {
-    title: "Software tools built for local government",
+    title: "Software that helps cities serve residents faster",
     subtitle:
-      "We're building a platform of tools that help public-sector teams work faster and serve residents better. Legaside is our first product.",
+      "We're building the platform that gives municipal teams visibility, automation, and control over constituent communication—so staff can focus on outcomes instead of inbox management.",
     ctaPrimary: "Get early access",
     ctaSecondary: "See Legaside"
   },
@@ -11,12 +11,12 @@ export const copy = {
     subheadline: "Constituent communication happens across fragmented systems",
     description: "Municipal teams manage high volumes of resident requests across email, portals, and spreadsheets without a unified view.",
     bullets: [
-      "High message volume across multiple channels",
-      "Requests arrive via email, 311 portals, and public inboxes",
-      "Manual triage and tracking",
-      "Staff use spreadsheets and forwarding to coordinate responses",
-      "Limited visibility into trends",
-      "Leadership lacks real-time insights into service requests and response times"
+      "200-500 weekly messages per office across fragmented channels",
+      "Email, 311 portals, social media, and walk-ins with no unified view",
+      "15-20 staff hours weekly spent on manual triage and routing",
+      "Responses tracked in spreadsheets with no accountability metrics",
+      "Systemic issues invisible until they become public crises",
+      "Leadership lacks real-time data on response times and service gaps"
     ]
   },
   approach: {
@@ -24,26 +24,26 @@ export const copy = {
     cards: [
       {
         title: "Built for Government",
-        description: "Designed specifically for public-sector workflows, compliance requirements, and accountability standards."
+        description: "Designed specifically for public-sector workflows, compliance requirements, and accountability standards. Every feature respects the unique demands of government operations."
       },
       {
         title: "Multiple Tools, One Platform",
-        description: "We're building an integrated suite of tools that work together to streamline constituent services."
+        description: "We're building an integrated suite of tools that work together to streamline constituent services. Start with one product, expand as your needs grow."
       },
       {
         title: "Security-First Design",
-        description: "Enterprise-grade security, data isolation, and audit logging built into every layer."
+        description: "Enterprise-grade security, data isolation, and audit logging built into every layer. Public records compliance and data sovereignty are baseline, not features."
       }
     ]
   },
   solution: {
     heading: "Legaside",
-    sub: "Intelligent inbox for constituent services",
+    sub: "Intelligent inbox for constituent services—built for accountability",
     points: [
-      "Automatically categorize and prioritize incoming messages",
-      "Generate draft responses with full staff review and approval",
-      "Track resolution times and identify service trends",
-      "Connect existing email and 311 systems in minutes"
+      "Automatically categorize and prioritize incoming messages with explainable AI",
+      "Generate draft responses with full staff review and approval—humans always in the loop",
+      "Track resolution times, identify service trends, and surface patterns before they become crises",
+      "Connect existing email and 311 systems in minutes with secure OAuth integration"
     ],
     learnMoreUrl: "https://legaside.municipallabs.ai"
   },
@@ -78,9 +78,9 @@ export const copy = {
     ]
   },
   cta: {
-    heading: "Bring modern constituent response tools to your city.",
-    sub: "Join the early access list and help shape how Legaside fits your city’s workflows.",
-    button: "Request access"
+    heading: "Stop drowning in constituent emails.",
+    sub: "",
+    button: "Book a demo"
   }
 } as const;
 

@@ -52,7 +52,7 @@ export function About() {
       <SectionHeading
         eyebrow="About"
         title="Meet the founders of MunicipalLabs."
-        description="We’re building practical AI for government teams. We met at Princeton, started prototyping together, and have been working in person since."
+        description="We're building practical AI for government teams. Our approach combines deep government domain expertise with advanced technical capabilities."
       />
 
       <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -64,12 +64,30 @@ export function About() {
           transition={{ duration: 0.6 }}
         >
           <h3 className="text-xl font-semibold text-white">Our story</h3>
-          <p className="text-sm text-muted-foreground">
-            We met at the start of a semester at Princeton after Mason sent an email
-            looking for people interested in startups. We started brainstorming and prototyping,
-            realized we worked well as a team, and decided to build MunicipalLabs. We’ve been
-            working in person since then.
-          </p>
+          <div className="space-y-4 text-sm text-muted-foreground">
+            <p>
+              Mason grew up watching his mother—a New York City Council Member—navigate the daily
+              reality of constituent services: staff drowning in unstructured emails, requests falling
+              through the cracks, and no clear way to understand what residents actually needed.
+            </p>
+            <p>
+              When we met at Princeton, we realized this wasn't just a problem for one office—it was
+              systemic across local government. Aikhan brought technical expertise in NLP and AI systems,
+              recognized by the Kyrgyz government for his work in education technology. Mason brought
+              deep relationships with city officials and firsthand understanding of how council offices
+              actually work.
+            </p>
+            <p>
+              We started by shadowing constituent services teams in multiple cities. The same patterns
+              emerged everywhere: fragmented tools, manual triage, and talented staff spending their
+              time on repetitive tasks instead of solving real problems for residents.
+            </p>
+            <p>
+              We built MunicipalLabs to fix this. Not with another black-box AI tool, but with
+              infrastructure that respects how government actually operates—transparent, auditable,
+              and built for public accountability.
+            </p>
+          </div>
           <div className="grid gap-6 md:grid-cols-2">
             {founders.map((f) => (
               <div
